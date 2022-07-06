@@ -34,10 +34,11 @@ class FixturesRecyclerAdapter(val context: Context, val list: List<Fixture>, val
         holder.textView_match.text = item.homeName + " vs " + item.awayName
         holder.textView_season.text = item.seasonName
 
-        val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm a")
+        val dateFormatter = SimpleDateFormat("EEE, d MMM")
+        val timeFormatter = SimpleDateFormat("hh:mm a")
         val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(item.date)
 
-        holder.textView_time.text = formatter.format(date)
+        holder.textView_time.text = dateFormatter.format(date) + "\n" + timeFormatter.format(date)
 
         holder.fixture_container.setOnClickListener {
             listener.onClicked(item)
